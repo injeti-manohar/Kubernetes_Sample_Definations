@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp-deployment
+  labels:
+    name: myappdeployment
+    type: frontend
+spec:
+  template:
+    # Now the POD details are entered.
+    metadata:
+      name: myapp-pod
+      labels:
+        app: myapp
+    spec:
+        containers:
+          - name: nginx-container
+            image: nginx
+  replicas: 2
+  selector:
+    matchLabels:
+      app: myapp # This has to match the label in the metadata of the POD.
