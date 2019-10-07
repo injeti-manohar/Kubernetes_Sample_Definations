@@ -1,0 +1,13 @@
+apiVersion: certificates.k8s.io/v1beta1
+kind: CertificateSigningRequest
+metadata:
+  name: <name of the client>
+spec:
+  groups:
+    - system:authenticated <name of group it needs to be added to>
+  usages:
+    - digital signature
+    - key encipherment
+    - server auth
+  request:
+    <Encoded scr request, cat jane.csr | base64>
